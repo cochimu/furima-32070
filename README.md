@@ -21,23 +21,23 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | string     | null: false                    |
-| introduction | text       | null: false                    |
-| category_id  | integer    | null: false                    |
-| status_id    | integer    | null: false                    |
-| price        | integer    | null: false                    |
-| charges_id   | integer    | null: false                    |
-| area_id      | integer    | null: false                    |
-| days_id      | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| introduction  | text       | null: false                    |
+| category_id   | integer    | null: false                    |
+| status_id     | integer    | null: false                    |
+| price         | integer    | null: false                    |
+| charges_id    | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| days_id       | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
 - has_many :comments
 - has_one :order
-- has_many :images
+- has_one_attached :image
 - belongs_to :user
 - belongs_to :category
 - belongs_to :status
@@ -69,6 +69,7 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :deliver_address
 
 ## deliver_addresses テーブル
 
