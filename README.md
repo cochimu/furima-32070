@@ -42,7 +42,7 @@
 - belongs_to :category
 - belongs_to :status
 - belongs_to :charge
-- belongs_to :area
+- belongs_to :prefecture
 - belongs_to :day
 
 ## comments テーブル
