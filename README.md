@@ -25,12 +25,12 @@
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
 | introduction | text       | null: false                    |
-| category     | integer    | null: false, foreign_key: true |
-| status       | integer    | null: false, foreign_key: true |
+| category_id  | integer    | null: false                    |
+| status_id    | integer    | null: false                    |
 | price        | integer    | null: false                    |
-| charges      | integer    | null: false, foreign_key: true |
-| area         | integer    | null: false, foreign_key: true |
-| days         | integer    | null: false, foreign_key: true |
+| charges_id   | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
+| days_id      | integer    | null: false                    |
 | user         | references | null: false, foreign_key: true |
 
 ### Association
@@ -68,21 +68,21 @@
 ### Association
 
 - belongs_to :user
-- has_one :item
-- has_one :deliver_address
+- belongs_to :item
 
 ## deliver_addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| post_code     | integer    | null: false                    |
-| prefecture    | string     | null: false                    |
+| post_code     | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building_name | string     |                                |
-| phone_number  | integer    | null: false                    |
+| phone_number  | string     | null: false                    |
 | order         | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :oder
+- belongs_to :oder
+- belongs_to :prefecture
