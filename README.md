@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| nickname        | string | null: false |
-| email           | string | null: false |
-| password        | string | null: false |
-| last_name       | string | null: false |
-| first_name      | string | null: false |
-| last_name_kana  | string | null: false |
-| first_name_kana | string | null: false |
-| birth_day       | date   | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| birth_day          | date   | null: false |
 
 ### Association
 
@@ -25,12 +25,12 @@
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
 | introduction | text       | null: false                    |
-| category     | references | null: false, foreign_key: true |
-| status       | references | null: false, foreign_key: true |
+| category     | integer    | null: false, foreign_key: true |
+| status       | integer    | null: false, foreign_key: true |
 | price        | integer    | null: false                    |
-| charges      | references | null: false, foreign_key: true |
-| area         | references | null: false, foreign_key: true |
-| days         | references | null: false, foreign_key: true |
+| charges      | integer    | null: false, foreign_key: true |
+| area         | integer    | null: false, foreign_key: true |
+| days         | integer    | null: false, foreign_key: true |
 | user         | references | null: false, foreign_key: true |
 
 ### Association
@@ -58,24 +58,12 @@
 - belongs_to :user
 - belongs_to :item
 
-## images テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| image  |            |                                |
-| item   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :items
-
 ## orders テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
-| deliver_address | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -85,14 +73,15 @@
 
 ## deliver_addresses テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| post_code     | integer | null: false |
-| prefecture    | string  | null: false |
-| city          | string  | null: false |
-| address       | string  | null: false |
-| building_name | string  |             |
-| phone_number  | integer | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_code     | integer    | null: false                    |
+| prefecture    | string     | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | integer    | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
