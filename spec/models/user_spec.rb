@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
     end
 
     context '新規登録ができる時' do
-
       it '全ての項目が存在すれば登録できること' do
         expect(@user).to be_valid
       end
@@ -17,11 +16,9 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = 'a123456'
         expect(@user).to be_valid
       end
-
     end
 
     context '新規登録できない時' do
-
       it 'nicknameが空では登録できないこと' do
         @user.nickname = nil
         @user.valid?
@@ -45,7 +42,7 @@ RSpec.describe User, type: :model do
       it 'emailに@が必ず含まれること' do
         @user.email = 'sample.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       it 'passwordが空では登録できないこと' do
