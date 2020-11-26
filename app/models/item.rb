@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   belongs_to :user
   has_one_attached :image
 
@@ -13,7 +12,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :introduction
-    validates :price
+    validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
     validates :image
   end
 
