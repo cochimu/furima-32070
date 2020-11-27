@@ -3,11 +3,11 @@ FactoryBot.define do
     name         { Faker::Game.title }
     introduction { Faker::Game.genre }
     price        { Faker::Number.between(from: 300, to: 9999999) }
-    association :category
-    association :status
-    association :charge
-    association :prefecture
-    association :day
+    category_id  { 2 }
+    status_id    { 2 }
+    charge_id    { 2 }
+    prefecture_id{ 2 }
+    day_id       { 2 }
     association :user
 
     after(:build) do |item|
