@@ -31,34 +31,64 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Introduction can't be blank")
       end
 
-      it 'カテゴリーの情報がないと登録できないこと' do
+      it 'カテゴリーの情報がnilだと登録できないこと' do
         @item.category_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Category is not a number')
       end
 
-      it '商品の状態についての情報がないと登録できないこと' do
+      it 'カテゴリーの情報が1だと登録できないこと' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
+
+      it '商品の状態についての情報がnilだと登録できないこと' do
         @item.status_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Status is not a number')
       end
 
-      it '配送料の負担についての情報がないと登録できないこと' do
+      it '商品の状態についての情報が1だと登録できないこと' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
+      end
+
+      it '配送料の負担についての情報がnilだと登録できないこと' do
         @item.charge_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Charge is not a number')
       end
 
-      it '発送元の地域の情報がないと登録できないこと' do
+      it '配送料の負担についての情報が1だと登録できないこと' do
+        @item.charge_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Charge must be other than 1')
+      end
+
+      it '発送元の地域の情報がnilだと登録できないこと' do
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture is not a number')
       end
 
-      it '発送までの日数の情報がないと登録できないこと' do
+      it '発送元の地域の情報が1だと登録できないこと' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+      end
+
+      it '発送までの日数の情報がnilだと登録できないこと' do
         @item.day_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Day is not a number')
+      end
+
+      it '発送までの日数の情報が1だと登録できないこと' do
+        @item.day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Day must be other than 1')
       end
 
       it '価格の入力がないと登録できないこと' do
