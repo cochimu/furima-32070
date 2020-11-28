@@ -38,6 +38,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destory
+  end
+
   private
 
   def item_params
