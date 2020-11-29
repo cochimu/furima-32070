@@ -9,4 +9,9 @@ class UserOrder
   end
   validates :prefecture, numericality: { other_than: 1, message: "can't be blank" }
   validates :phone_number, format: {with: /\A\d{11}\z/ }
+
+  def save
+    order = Order.create
+    Deliver_address.create(post_code: post_code, prefecture: prefecture, city: city, address: address, building_name: building_name, phone_number: phone_number, order_id: order.id)
+  end
 end
