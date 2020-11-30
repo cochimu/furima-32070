@@ -3,5 +3,4 @@ class DeliverAddress < ApplicationRecord
 
   xtend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
-  
 end

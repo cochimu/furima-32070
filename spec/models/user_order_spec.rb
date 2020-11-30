@@ -20,9 +20,9 @@ RSpec.describe UserOrder, type: :model do
       end
 
       it 'post_codeにハイフンがないと登録できないこと' do
-        @user_order.post_code = 1234567
+        @user_order.post_code = 1_234_567
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@user_order.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
 
       it 'prefecture_idが空だと登録できないこと' do
@@ -52,21 +52,20 @@ RSpec.describe UserOrder, type: :model do
       it 'phone_numberが空だと登録できないこと' do
         @user_order.phone_number = nil
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Phone number is invalid")
+        expect(@user_order.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberにハイフンがあると登録できないこと' do
-        @user_order.phone_number = 123-1234-5678
+        @user_order.phone_number = 123 - 1234 - 5678
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Phone number is invalid")
+        expect(@user_order.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberは11桁以内であること' do
-        @user_order.phone_number = 123-1234-56789
+        @user_order.phone_number = 123 - 1234 - 56_789
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Phone number is invalid")
+        expect(@user_order.errors.full_messages).to include('Phone number is invalid')
       end
-
     end
   end
 end
