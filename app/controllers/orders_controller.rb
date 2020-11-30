@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   before_action :set_item, only: [:index, :create]
+  before_action :fraud_prevention, only: [:index]
 
   def index
     @user_order = UserOrder.new
@@ -23,5 +25,9 @@ class OrdersController < ApplicationController
 
     def set_item
       @item = Item.find(params[:item_id])
+    end
+
+    def fraud_prevention
+      redirect_to root_path if Item.find(params[:item_id]).user.id == current_user.id
     end
 end
