@@ -15,3 +15,4 @@ class UserOrder
     Deliver_address.create(post_code: post_code, prefecture: prefecture, city: city, address: address, building_name: building_name, phone_number: phone_number, order_id: order.id)
   end
 end
+
