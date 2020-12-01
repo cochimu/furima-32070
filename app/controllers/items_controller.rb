@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:edit]
   before_action :barrier_user, only: [:edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit]
 
   def index
     @items = Item.all.order(created_at: :DESC)
@@ -26,10 +27,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
   end
 
   def edit
+    redirect_to root_path if @item.id == @order.item_id
   end
 
   def update
@@ -56,5 +57,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_order
+    @order = Order.find(params[:id])
   end
 end
