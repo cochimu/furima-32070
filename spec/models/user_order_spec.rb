@@ -13,7 +13,7 @@ RSpec.describe UserOrder, type: :model do
     end
 
     context '商品の購入ができない時' do
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @user_order.token = nil
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Token can't be blank")
