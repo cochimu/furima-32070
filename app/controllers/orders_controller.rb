@@ -10,12 +10,7 @@ class OrdersController < ApplicationController
   def create
     @user_order = UserOrder.new(order_params)
     if @user_order.valid?
-      Payjp.api_key = "sk_test_0d30d59d9a034132a22fafc2"
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: order_params[:token],
-        currency: 'jpy'
-      )
+      pay_item
       @user_order.save
       redirect_to root_path
     else
@@ -35,5 +30,14 @@ class OrdersController < ApplicationController
 
   def fraud_prevention
     redirect_to root_path if Item.find(params[:item_id]).user.id == current_user.id
+  end
+
+  def pay_item
+    Payjp.api_key = "sk_test_0d30d59d9a034132a22fafc2"
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: order_params[:token],
+        currency: 'jpy'
+      )
   end
 end
