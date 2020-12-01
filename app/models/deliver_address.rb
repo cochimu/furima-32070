@@ -1,6 +1,6 @@
 class DeliverAddress < ApplicationRecord
-  belongs_to :oder
+  belongs_to :order
 
-  xtend ActiveHash::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
 end
