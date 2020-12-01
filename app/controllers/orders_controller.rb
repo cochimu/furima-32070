@@ -5,9 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @order = Order.find(params[:item_id])
-    if @order.item_id == @item.id
-      redirect_to root_path
-    end
+    redirect_to root_path if @order.item_id == @item.id
     @user_order = UserOrder.new
   end
 
