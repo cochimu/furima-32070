@@ -60,6 +60,6 @@ class ItemsController < ApplicationController
   end
 
   def set_order
-    @order = Order.find(params[:id])
+    @order = Order.find_by(params[:item_id])
   end
 end

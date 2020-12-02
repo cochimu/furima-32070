@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :fraud_prevention, only: [:index]
 
   def index
-    @order = Order.find(params[:item_id])
+    @order = Order.find_by(params[:item_id])
     redirect_to root_path if @order.item_id == @item.id
     @user_order = UserOrder.new
   end
