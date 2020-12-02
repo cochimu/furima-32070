@@ -2,11 +2,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:edit]
   before_action :barrier_user, only: [:edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_order, only: [:show, :edit]
 
   def index
     @items = Item.all.order(created_at: :DESC)
-    @orders = Order.all
   end
 
   def new
@@ -59,7 +57,4 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_order
-    @order = Order.find_by(params[:item_id])
-  end
 end
